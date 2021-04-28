@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\RequestsMaster",
+    "\\RequestsMaster\\RequestsMaster",
+    "\\RequestsMaster\\RequestsMaster\\Views",
+    "\\RequestsMaster\\RequestsMaster\\Views\\Home"
   ],
+  "SelectedNode": "\\RequestsMaster\\RequestsMaster.sln",
   "PreviewInSolutionExplorer": false
 }
