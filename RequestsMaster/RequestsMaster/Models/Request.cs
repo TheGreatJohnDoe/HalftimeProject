@@ -11,6 +11,6 @@ namespace RequestsMaster.Models
         public DateTime created { get; set; }
         public string type { get; set; }
         public int userId { get; set; }
-
+        public string status { get; set; }
     }
 }
