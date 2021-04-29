@@ -7,5 +7,8 @@ namespace RequestsMaster.Models
 {
     public class User
     {
+        public int id { get; set; }
+        public string fullName { get; set; }
+        public string userRole { get; set; }
     }
 }

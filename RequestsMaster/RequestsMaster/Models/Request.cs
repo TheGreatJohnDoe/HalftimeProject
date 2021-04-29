@@ -7,5 +7,10 @@ namespace RequestsMaster.Models
 {
     public class Request
     {
+        public int id { get; set; }
+        public DateTime created { get; set; }
+        public string type { get; set; }
+        public int userId { get; set; }
+
     }
 }
