@@ -42,5 +42,21 @@ namespace RequestsMaster.Repositories
                 connection.Query<Request>($"INSERT INTO t_requests (created, req_type, userid, req_status) VALUES ('2021-04-29T08:21:53.13', 'create user',1,'Pending')").ToList();
             }
         }
+
+        public string omerHatzair(String Pazam)
+        {
+            if (User.toString()== "Omer") {
+                return "Paur";
+            } 
+            else if (User.toString()=="Nir" || User.toString() == "Tali")
+            {
+                return "Pazam olam";
+            }
+            else
+            {
+                return "You Must change your password :)";
+                // we did git push
+            }
+        }
     }
 }

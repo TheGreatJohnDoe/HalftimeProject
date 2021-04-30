@@ -10,5 +10,9 @@ namespace RequestsMaster.Models
         public int id { get; set; }
         public string fullName { get; set; }
         public string userRole { get; set; }
+        static public string toString()
+        {
+            return "Omer";
+        }
     }
 }
