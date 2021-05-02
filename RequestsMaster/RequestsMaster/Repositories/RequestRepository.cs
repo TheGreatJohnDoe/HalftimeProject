@@ -43,20 +43,20 @@ namespace RequestsMaster.Repositories
             }
         }
 
-        public string omerHatzair(String Pazam)
-        {
-            if (User.toString()== "Omer") {
-                return "Paur";
-            } 
-            else if (User.toString()=="Nir" || User.toString() == "Tali")
-            {
-                return "Pazam olam";
-            }
-            else
-            {
-                return "You Must change your password :)";
-                // we did git commit
-            }
-        }
+        //public string omerHatzair(String Pazam)
+        //{
+        //    if (User.toString()== "Omer") {
+        //        return "Paur";
+        //    } 
+        //    else if (User.toString()=="Nir" || User.toString() == "Tali")
+        //    {
+        //        return "Pazam olam";
+        //    }
+        //    else
+        //    {
+        //        return "You Must change your password :)";
+        //        // we did git commit
+        //    }
+        //}
     }
 }
