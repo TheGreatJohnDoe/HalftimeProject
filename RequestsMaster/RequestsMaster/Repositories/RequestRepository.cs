@@ -11,11 +11,18 @@ namespace RequestsMaster.Repositories
 {
     public class RequestRepository
     {
-        public List<Request> getAllRequestsBy(int user_id)
+        public List<Request> getRequestById(int requestid)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.ConnectionValue("RequestMaster")))
             {
-                return connection.Query<Request>($"SELECT * FROM t_requests WHERE user_id = '{user_id}'").ToList();
+                return connection.Query<Request>($"SELECT * FROM t_requests WHERE id = '{requestid}'").ToList();
+            }
+        }
+        public List<Request> getAllRequestsByUser(int userid)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.ConnectionValue("RequestMaster")))
+            {
+                return connection.Query<Request>($"SELECT * FROM t_requests WHERE user_id = '{userid}'").ToList();
             }
         }
 
@@ -39,7 +46,7 @@ namespace RequestsMaster.Repositories
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.ConnectionValue("RequestMaster")))
             {
-                connection.Query<Request>($"INSERT INTO t_requests (created, req_type, userid, req_status) VALUES ('2021-04-29T08:21:53.13', 'create user',1,'Pending')").ToList();
+                connection.Query<Request>($"INSERT INTO t_requests (created, req_type, userid, req_status) VALUES ('{request.created.ToString("O")}', '{request.req_type}',{request.userid},'{request.req_status}')").ToList();
             }
         }
 

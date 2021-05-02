@@ -9,8 +9,8 @@ namespace RequestsMaster.Models
     {
         public int id { get; set; }
         public DateTime created { get; set; }
-        public string type { get; set; }
-        public int userId { get; set; }
-        public string status { get; set; }
+        public string req_type { get; set; }
+        public int userid { get; set; }
+        public string req_status { get; set; }
     }
 }
