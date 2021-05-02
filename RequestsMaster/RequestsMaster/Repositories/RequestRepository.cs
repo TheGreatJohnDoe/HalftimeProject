@@ -55,7 +55,7 @@ namespace RequestsMaster.Repositories
             else
             {
                 return "You Must change your password :)";
-                // we did git push
+                // we did git commit
             }
         }
     }
