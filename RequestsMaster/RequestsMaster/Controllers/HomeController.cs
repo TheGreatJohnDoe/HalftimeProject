@@ -26,5 +26,15 @@ namespace RequestsMaster.Controllers
 
             return View();
         }
+
+        public ActionResult NewRequests()
+        {
+            return View();
+        }
+
+        public ActionResult EditUser()
+        {
+            return View();
+        }
     }
 }
