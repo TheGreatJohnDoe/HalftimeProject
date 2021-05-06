@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RequestsMaster.Models;
 
 namespace RequestsMaster.Controllers
 {
@@ -14,11 +15,22 @@ namespace RequestsMaster.Controllers
             return View();
         }
 
-        public ActionResult CreateUser()
+        public ActionResult New()
         {
             return View();
         }
 
+        public ActionResult CreateUser()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateUserBy(string Name, string GivenName, string Surname, string AccountName, string Password)
+        {
+            string details = $"Name:{Name},GivenName:{GivenName},Surname:{Surname},AccountName:{AccountName},Password:{Password}";
+            ; ;
+            
+        }
         public ActionResult DeleteUser()
         {
             return View();

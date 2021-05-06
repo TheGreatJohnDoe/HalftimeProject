@@ -12,5 +12,6 @@ namespace RequestsMaster.Models
         public string req_type { get; set; }
         public int userid { get; set; }
         public string req_status { get; set; }
+        public string req_details { get; set; }
     }
 }

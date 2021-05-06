@@ -46,7 +46,7 @@ namespace RequestsMaster.Repositories
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.ConnectionValue("RequestMaster")))
             {
-                connection.Query<Request>($"INSERT INTO t_requests (created, req_type, userid, req_status) VALUES ('{request.created.ToString("O")}', '{request.req_type}',{request.userid},'{request.req_status}')").ToList();
+                connection.Query<Request>($"INSERT INTO t_requests (created, req_type, userid, req_status, req_details) VALUES ('{request.created.ToString("O")}', '{request.req_type}',{request.userid},'{request.req_status}', {request.req_details})").ToList();
             }
         }
 
