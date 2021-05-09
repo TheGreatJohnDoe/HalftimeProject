@@ -7,5 +7,6 @@ namespace RequestsMaster.Services
 {
     public class RequestsService
     {
+        public void newRequest()
     }
 }

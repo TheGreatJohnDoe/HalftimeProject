@@ -4,42 +4,44 @@
 }
 
 <h2></h2>
-
-<form>
-    <div class="form-group row">
-        <label for="input" class="col-sm-2 col-form-label">Name</label>
-        <div class="col-sm-10">
-            <input class="form-control" name="Name">
+@using (Html.BeginForm("CreateUserBy", "NewRequests", FormMethod.Post))
+{
+    <form>
+        <div class="form-group row">
+            <label for="input" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+                <input class="form-control" name="Name">
+            </div>
         </div>
-    </div>
-    <div class="form-group row">
-        <label for="input" class="col-sm-2 col-form-label">Given Name</label>
-        <div class="col-sm-10">
-            <input class="form-control" name="GivenName">
+        <div class="form-group row">
+            <label for="input" class="col-sm-2 col-form-label">Given Name</label>
+            <div class="col-sm-10">
+                <input class="form-control" name="GivenName">
+            </div>
         </div>
-    </div>
-    <div class="form-group row">
-        <label for="input" class="col-sm-2 col-form-label">Surname</label>
-        <div class="col-sm-10">
-            <input class="form-control" name="Surname">
+        <div class="form-group row">
+            <label for="input" class="col-sm-2 col-form-label">Surname</label>
+            <div class="col-sm-10">
+                <input class="form-control" name="Surname">
+            </div>
         </div>
-    </div>
-    <div class="form-group row">
-        <label for="input" class="col-sm-2 col-form-label">Account Name</label>
-        <div class="col-sm-10">
-            <input class="form-control" name="AccountName">
+        <div class="form-group row">
+            <label for="input" class="col-sm-2 col-form-label">Account Name</label>
+            <div class="col-sm-10">
+                <input class="form-control" name="AccountName">
+            </div>
         </div>
-    </div>
-    <div class="form-group row">
-        <label for="input" class="col-sm-2 col-form-label">Password</label>
-        <div class="col-sm-10">
-            <input class="form-control" name="Password">
+        <div class="form-group row">
+            <label for="input" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+                <input class="form-control" name="Password">
+            </div>
         </div>
-    </div>
-    <div class="form-group row">
-        <div class="col-sm-10 offset-sm-2">
-            <a href="/newrequests" type="submit" class="btn btn-primary">Apply</a>
+        <div class="form-group row">
+            <div class="col-sm-10 offset-sm-2">
+                <button type="submit" class="btn btn-primary">Apply</button>
+            </div>
         </div>
-    </div>
-</form>
+    </form>
+}
 
