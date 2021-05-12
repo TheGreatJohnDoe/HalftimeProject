@@ -18,7 +18,7 @@ namespace RequestsMaster.Repositories
                 return connection.Query<Request>($"SELECT * FROM t_requests WHERE id = '{requestid}'").ToList();
             }
         }
-        public List<Request> getAllRequestsByUser(int userid)
+        public List<Request> getAllRequestsByUser(string userid)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.ConnectionValue("RequestMaster")))
             {

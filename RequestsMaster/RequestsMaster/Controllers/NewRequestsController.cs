@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.DirectoryServices.AccountManagement;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RequestsMaster.Models;
+using RequestsMaster.Utility;
 
 namespace RequestsMaster.Controllers
 {
@@ -23,7 +25,10 @@ namespace RequestsMaster.Controllers
 
         public ActionResult CreateUser()
         {
+            bool isAdmin = ActiveDirectoryUtils.isAdmin(System.Web.HttpContext.Current.User.Identity.Name);
             System.Diagnostics.Debug.WriteLine("im there");
+            ViewData["Name"] = System.Web.HttpContext.Current.User.Identity.Name;
+            ViewData["isAdmin"] = isAdmin;
             return View();
         }
         [HttpPost]
