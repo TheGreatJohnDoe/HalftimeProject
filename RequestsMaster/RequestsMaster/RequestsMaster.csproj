@@ -138,6 +138,7 @@
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Services\RequestsService.cs" />
     <Compile Include="Services\UsersService.cs" />
+    <Compile Include="Utility\ActiveDirectoryUtils.cs" />
     <Compile Include="Utility\DBHelper.cs" />
   </ItemGroup>
   <ItemGroup>

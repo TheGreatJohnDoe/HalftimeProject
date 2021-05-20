@@ -6,15 +6,18 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RequestsMaster.Models;
+using RequestsMaster.Services;
 using RequestsMaster.Utility;
 
 namespace RequestsMaster.Controllers
 {
     public class NewRequestsController : Controller
     {
+        private RequestsService requestsService;
         // GET: NewRequests
         public ActionResult Index()
         {
+            ViewData["requests"] = requestsService.getAllRequestsByUser(ActiveDirectoryUtils.currentUser());
             return View();
         }
 
