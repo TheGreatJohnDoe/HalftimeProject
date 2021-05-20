@@ -13,7 +13,7 @@ namespace RequestsMaster.Controllers
 {
     public class NewRequestsController : Controller
     {
-        private RequestsService requestsService;
+        private RequestsService requestsService = new RequestsService();
         // GET: NewRequests
         public ActionResult Index()
         {

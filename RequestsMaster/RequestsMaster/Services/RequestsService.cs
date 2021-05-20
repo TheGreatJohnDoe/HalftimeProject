@@ -9,7 +9,7 @@ namespace RequestsMaster.Services
 {
     public class RequestsService
     {
-        private RequestRepository requestsRepository;
+        private RequestRepository requestsRepository = new RequestRepository();
         public void newCreateRequest(string req_type, string req_status)
         {
             DateTime created = DateTime.Now;

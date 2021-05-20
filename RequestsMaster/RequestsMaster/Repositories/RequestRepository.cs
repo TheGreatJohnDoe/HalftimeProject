@@ -13,22 +13,22 @@ namespace RequestsMaster.Repositories
     {
         public List<Request> getRequestById(int requestid)
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.ConnectionValue("RequestMaster")))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.ConnectionValue("RequestMasterDB")))
             {
                 return connection.Query<Request>($"SELECT * FROM t_requests WHERE id = '{requestid}'").ToList();
             }
         }
         public List<Request> getAllRequestsByUser(string userid)
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.ConnectionValue("RequestMaster")))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.ConnectionValue("RequestsMasterDB")))
             {
-                return connection.Query<Request>($"SELECT * FROM t_requests WHERE user_id = '{userid}'").ToList();
+                return connection.Query<Request>($"SELECT * FROM t_requests WHERE userid = '{userid}'").ToList();
             }
         }
 
         public List<Request> getAllRequests()
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.ConnectionValue("RequestMaster")))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.ConnectionValue("RequestMasterDB")))
             {
                 return connection.Query<Request>($"SELECT * FROM t_requests").ToList();
             }
@@ -36,7 +36,7 @@ namespace RequestsMaster.Repositories
 
         public List<Request> getPendingRequests()
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.ConnectionValue("RequestMaster")))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.ConnectionValue("RequestMasterDB")))
             {
                 return connection.Query<Request>($"SELECT * FROM t_requests WHERE req_status = 'Pending'").ToList();
             }
@@ -44,7 +44,7 @@ namespace RequestsMaster.Repositories
 
         public void newRequest(Request request)
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.ConnectionValue("RequestMaster")))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.ConnectionValue("RequestMasterDB")))
             {
                 connection.Query<Request>($"INSERT INTO t_requests (created, req_type, userid, req_status, req_details) VALUES ('{request.created.ToString("O")}', '{request.req_type}',{request.userid},'{request.req_status}', {request.req_details})").ToList();
             }
