@@ -66,11 +66,11 @@ namespace RequestsMaster.Utility
             }
         }
 
-        public static void editUser(string userid, string Name, string GivenName, string Surname, string AccountName, string Password)
+        public static void editUser(string Name, string GivenName, string Surname, string AccountName, string Password)
         {
             using (PrincipalContext context = new PrincipalContext(ContextType.Domain))
             {
-                using (UserPrincipal user = UserPrincipal.FindByIdentity(context, userid))
+                using (UserPrincipal user = UserPrincipal.FindByIdentity(context, AccountName))
                 {
                     if (Name != null)
                         user.Name = Name;

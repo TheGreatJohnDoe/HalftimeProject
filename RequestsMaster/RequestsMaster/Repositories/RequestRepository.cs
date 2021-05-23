@@ -42,11 +42,28 @@ namespace RequestsMaster.Repositories
             }
         }
 
+        public List<Request> getApprovedUnexecutedRequests()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.ConnectionValue("RequestMasterDB")))
+            {
+                return connection.Query<Request>($"SELECT * FROM t_requests WHERE req_status = 'Approved'").ToList();
+            }
+        }
+
+
         public void newRequest(Request request)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.ConnectionValue("RequestMasterDB")))
             {
                 connection.Query<Request>($"INSERT INTO t_requests (created, req_type, userid, req_status, req_details) VALUES ('{request.created.ToString("O")}', '{request.req_type}',{request.userid},'{request.req_status}', {request.req_details})").ToList();
+            }
+        }
+
+        public void changeRequestStatus(int requestid, string req_status)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(DBHelper.ConnectionValue("RequestMasterDB")))
+            {
+                connection.Query<Request>($"UPDATE t_requests SET req_status = '{req_status}' WHERE id={requestid}").ToList();
             }
         }
 

@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "AdminPage";
+}
+
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <!-- Navbar content -->
+    <a class="navbar-brand" href="#!">Requests Master</a>
+    <div class="nav-item active">
+        <a class="nav-link" href="/newrequests">My Requests <span class="sr-only">(current)</span></a>
+    </div>
+    <div class="nav-item">
+        <a class="nav-link" href="/newrequests/new">New Request</a>
+    </div>
+</nav>
+<br />
+<br />
+<br />
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Made by</th>
+            <th>ID</th>
+            <th>Created</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @using RequestsMaster.Models;
+        @foreach (var x in (List<Request>)ViewData["requests"])
+        {
+            <tr>
+                <td>
+                    @x.userid
+                </td>
+                <td>
+                    @x.id
+                </td>
+                <td>
+                    @x.created
+                </td>
+                <td>
+                    @x.req_type
+                </td>
+                <td>
+                    @x.req_status
+                </td>
+                <td>
+                    <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("ChangeRequestStatus", "NewRequests", new { requestid = x.id, req_status = "APPROVED" })'">Approve</button>
+                    <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("ChangeRequestStatus", "NewRequests", new { requestid = x.id, req_status = "DECLINED" })'">Decline</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

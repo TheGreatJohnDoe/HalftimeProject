@@ -38,6 +38,7 @@ namespace RequestsMaster.Controllers
         public ActionResult CreateUserBy(string Name, string GivenName, string Surname, string AccountName, string Password)
         {
             string details = $"Name={Name},GivenName={GivenName},Surname={Surname},AccountName={AccountName},Password={Password}";
+            requestsService.newCreateRequest("CREATE", ActiveDirectoryUtils.isAdmin(ActiveDirectoryUtils.currentUser()) ? "APPROVED" : "PENDING", details);
             return new HttpStatusCodeResult(HttpStatusCode.OK);  // OK = 200
         }
         public ActionResult DeleteUser()
@@ -48,6 +49,7 @@ namespace RequestsMaster.Controllers
         public ActionResult DeleteUserBy(string AccountName, string Password)
         {
             string details = $"AccountName={AccountName},Password={Password}";
+            requestsService.newCreateRequest("DELETE", ActiveDirectoryUtils.isAdmin(ActiveDirectoryUtils.currentUser()) ? "APPROVED" : "PENDING", details);
             return new HttpStatusCodeResult(HttpStatusCode.OK);  // OK = 200
         }
         public ActionResult EditUser()
@@ -57,13 +59,36 @@ namespace RequestsMaster.Controllers
 
         public ActionResult EditUserBy(string Name, string GivenName, string Surname, string AccountName, string Password)
         {
+            if (Name == "") Name = "?";
+            if (GivenName == "") GivenName = "?";
+            if (Surname == "") Surname = "?";
+            if (AccountName == "") AccountName = "?";
+            if (Password == "") Password = "?";
             string details = $"Name={Name},GivenName={GivenName},Surname={Surname},AccountName={AccountName},Password={Password}";
+            requestsService.newCreateRequest("EDIT", ActiveDirectoryUtils.isAdmin(ActiveDirectoryUtils.currentUser()) ? "APPROVED" : "PENDING", details);
             return new HttpStatusCodeResult(HttpStatusCode.OK);  // OK = 200
         }
 
         public ActionResult RequestAdmin()
         {
             return View();
+        }
+
+        public ActionResult AdminPage()
+        {
+            if (ActiveDirectoryUtils.isAdmin(ActiveDirectoryUtils.currentUser()))
+            {
+                ViewData["requests"] = requestsService.getPendingRequests();
+                return View();
+            }
+            else
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+        }
+
+        public ActionResult ChangeRequestStatus(int requestid, string req_status)
+        {
+            requestsService.changeRequestStatus(requestid, req_status);
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }
 }
